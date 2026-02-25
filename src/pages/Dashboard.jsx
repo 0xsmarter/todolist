@@ -14,6 +14,10 @@ const Dashboard = ({ tasks, users, activities }) => {
   const totalUsers = users?.length || 0;
   const activeUsers = users?.filter(u => u.status === "Active").length || 0;
 
+  // Get first active user for "My Tasks"
+  const currentUser = users?.find(u => u.status === "Active");
+  const myTasks = tasks?.filter(t => t.assignedUser === currentUser?.name) || [];
+
   // Calculate average progress
   const avgProgress = totalTasks > 0
     ? Math.round(tasks.reduce((sum, t) => sum + t.progress, 0) / totalTasks)
@@ -89,6 +93,39 @@ const Dashboard = ({ tasks, users, activities }) => {
           </div>
         </div>
       </div>
+
+      {myTasks.length > 0 && (
+        <div className="dashboard-card">
+          <div className="card-header-row">
+            <h3 className="card-title">My Tasks ({myTasks.length})</h3>
+            <span className="card-subtitle">Assigned to {currentUser?.name}</span>
+          </div>
+          <div className="my-tasks-list">
+            {myTasks.slice(0, 3).map((task) => (
+              <div key={task.id} className="my-task-item">
+                <div className="my-task-info">
+                  <h4 className="my-task-title">{task.title}</h4>
+                  <div className="my-task-meta">
+                    {task.date && <span>Due: {task.date}</span>}
+                    {task.priority && <span className={`task-priority-dot priority-${task.priority?.toLowerCase()}`}></span>}
+                  </div>
+                </div>
+                <div className="my-task-progress">
+                  <span className="progress-text">{task.progress}%</span>
+                  <div className="mini-progress-bar">
+                    <div className="mini-progress-fill" style={{ width: `${task.progress}%` }}></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {myTasks.length > 3 && (
+              <button onClick={() => navigate("/edit-task")} className="view-all-tasks-btn">
+                View all {myTasks.length} tasks →
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       <div className="dashboard-grid-secondary">
         <div className="dashboard-card quick-actions-card">

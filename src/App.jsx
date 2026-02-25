@@ -86,7 +86,7 @@ function App() {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard tasks={tasks} users={users} activities={activities} />} />
           <Route path="/manage-user" element={<ManageUser users={users} onAddUser={addUser} onDeleteUser={deleteUser} onToggleStatus={toggleUserStatus} onUpdateUser={updateUser} />} />
-          <Route path="/new-activity" element={<NewActivity onAddTask={addTask} />} />
+          <Route path="/new-activity" element={<NewActivity onAddTask={addTask} users={users} />} />
           <Route path="/edit-task" element={<EditTask tasks={filteredTasks} onUpdateTask={updateTask} onDeleteTask={deleteTask} />} />
           <Route path="/report" element={<Report tasks={tasks} activities={activities} />} />
         </Routes>

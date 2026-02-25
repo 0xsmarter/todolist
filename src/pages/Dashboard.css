@@ -266,6 +266,125 @@
     color: var(--text-muted);
 }
 
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.my-tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.my-task-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: var(--bg-hover);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.my-task-item:hover {
+    background-color: var(--accent-subtle);
+}
+
+.my-task-info {
+    flex: 1;
+}
+
+.my-task-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white;
+    margin: 0 0 0.25rem 0;
+}
+
+.my-task-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.task-priority-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.task-priority-dot.priority-urgent {
+    background-color: #ef4444;
+}
+
+.task-priority-dot.priority-high {
+    background-color: #f97316;
+}
+
+.task-priority-dot.priority-medium {
+    background-color: #eab308;
+}
+
+.task-priority-dot.priority-low {
+    background-color: #22c55e;
+}
+
+.my-task-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.progress-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    min-width: 2.5rem;
+    text-align: right;
+}
+
+.mini-progress-bar {
+    width: 60px;
+    height: 4px;
+    background-color: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    background-color: var(--accent-primary);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.view-all-tasks-btn {
+    padding: 0.625rem 1rem;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.view-all-tasks-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;
