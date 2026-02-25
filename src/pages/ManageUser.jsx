@@ -2,25 +2,50 @@ import React, { useState } from "react";
 import { Edit, Trash2 } from "lucide-react";
 import "./ManageUser.css";
 
-const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus }) => {
+const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus, onUpdateUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editingUserId, setEditingUserId] = useState(null);
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
   const [newUserRole, setNewUserRole] = useState("Viewer");
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    setIsEditMode(false);
+    setIsModalOpen(true);
+  };
+
+  const openEditModal = (user) => {
+    setIsEditMode(true);
+    setEditingUserId(user.id);
+    setNewUserName(user.name);
+    setNewUserEmail(user.email);
+    setNewUserRole(user.role);
+    setIsModalOpen(true);
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
+    setIsEditMode(false);
+    setEditingUserId(null);
     setNewUserName("");
     setNewUserEmail("");
     setNewUserRole("Viewer");
   };
 
   const handleAdd = () => {
-    if (onAddUser && newUserName && newUserEmail) {
-      onAddUser({ name: newUserName, email: newUserEmail, role: newUserRole });
-      closeModal();
+    if (!newUserName || !newUserEmail) return;
+
+    if (isEditMode && editingUserId) {
+      if (onUpdateUser) {
+        onUpdateUser(editingUserId, { name: newUserName, email: newUserEmail, role: newUserRole });
+      }
+    } else {
+      if (onAddUser) {
+        onAddUser({ name: newUserName, email: newUserEmail, role: newUserRole });
+      }
     }
+    closeModal();
   };
 
   return (
@@ -67,7 +92,7 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus }) => {
                 </td>
                 <td className="actions-cell">
                   <div className="actions-wrapper">
-                    <button className="action-btn">
+                    <button onClick={() => openEditModal(user)} className="action-btn">
                       <Edit size={16} />
                     </button>
                     <button
@@ -88,14 +113,14 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus }) => {
         <div className="modal-overlay">
           <div className="modal-content">
             <div className="modal-header">
-              <h3 className="modal-title">Add New User</h3>
+              <h3 className="modal-title">{isEditMode ? "Edit User" : "Add New User"}</h3>
             </div>
             <div className="modal-form">
               <div className="form-group">
                 <label className="form-label">Full Name</label>
                 <input
                   type="text"
-                  placeholder="e.g. John Doe"
+                  placeholder="e.g. Komlan Attiogbe"
                   className="form-input"
                   value={newUserName}
                   onChange={(e) => setNewUserName(e.target.value)}
@@ -105,7 +130,7 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus }) => {
                 <label className="form-label">Email Address</label>
                 <input
                   type="email"
-                  placeholder="e.g. john@example.com"
+                  placeholder="e.g. komlan.attiogbe@tg.tg"
                   className="form-input"
                   value={newUserEmail}
                   onChange={(e) => setNewUserEmail(e.target.value)}
@@ -129,7 +154,7 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus }) => {
                 Cancel
               </button>
               <button onClick={handleAdd} className="modal-btn confirm">
-                Create User
+                {isEditMode ? "Update User" : "Create User"}
               </button>
             </div>
           </div>

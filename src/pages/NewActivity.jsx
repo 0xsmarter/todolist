@@ -17,6 +17,14 @@ const NewActivity = ({ onAddTask }) => {
     }
   };
 
+  const handleCancel = () => {
+    setActivityName("");
+    setDescription("");
+    setDate("");
+    setPriority("Low");
+    navigate("/dashboard");
+  };
+
   return (
     <div className="new-activity-container">
       <h2 className="new-activity-title">Create New Activity</h2>
@@ -86,6 +94,7 @@ const NewActivity = ({ onAddTask }) => {
         <div className="form-actions">
           <button
             type="button"
+            onClick={handleCancel}
             className="cancel-btn"
           >
             Cancel

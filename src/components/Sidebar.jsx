@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Users, PlusCircle, Edit3, FileText, CheckSquare } from "lucide-react";
 import "./Sidebar.css";
 
@@ -16,14 +16,14 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
-        <div className="sidebar-logo-area">
+        <Link to="/dashboard" className="sidebar-logo-area">
           <h1 className="sidebar-title">
             <div className="sidebar-logo-icon">
               <CheckSquare size={20} color="white" />
             </div>
             TaskApp
           </h1>
-        </div>
+        </Link>
 
         <nav className="sidebar-nav">
           {navItems.map((item) => (

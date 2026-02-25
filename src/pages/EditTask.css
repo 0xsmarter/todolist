@@ -27,10 +27,21 @@
     animation: slide-in-up 0.5s ease-out;
 }
 
+.task-card.overdue {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
 .task-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+.task-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .task-name {
@@ -38,6 +49,28 @@
     font-weight: 500;
     color: white;
     margin-bottom: 0;
+}
+
+.overdue-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
 }
 
 .task-id {
@@ -104,6 +137,27 @@
 
 .update-btn:hover {
     background-color: var(--accent-primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border: 1px solid #ef4444;
+    border-radius: var(--radius-sm);
+    color: #ef4444;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.delete-btn:hover {
+    background-color: #ef4444;
     color: white;
     transform: scale(1.05);
 }
@@ -177,6 +231,12 @@
     color: var(--accent-primary);
 }
 
+.delete-warning {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
 .modal-footer {
     display: flex;
     gap: 1rem;
@@ -213,6 +273,14 @@
 .modal-btn.confirm:hover {
     background-color: var(--accent-hover);
     transform: translateY(-1px);
+}
+
+.modal-btn.confirm.delete {
+    background-color: #ef4444;
+}
+
+.modal-btn.confirm.delete:hover {
+    background-color: #dc2626;
 }
 
 @keyframes slide-in-up {
