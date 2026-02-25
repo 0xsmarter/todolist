@@ -6,7 +6,6 @@ import "./Dashboard.css";
 const Dashboard = ({ tasks, users, activities }) => {
   const navigate = useNavigate();
 
-  // Calculate real stats
   const totalTasks = tasks?.length || 0;
   const completedTasks = tasks?.filter(t => t.progress === 100).length || 0;
   const inProgressTasks = tasks?.filter(t => t.progress > 0 && t.progress < 100).length || 0;
@@ -14,11 +13,9 @@ const Dashboard = ({ tasks, users, activities }) => {
   const totalUsers = users?.length || 0;
   const activeUsers = users?.filter(u => u.status === "Active").length || 0;
 
-  // Get first active user for "My Tasks"
   const currentUser = users?.find(u => u.status === "Active");
   const myTasks = tasks?.filter(t => t.assignedUser === currentUser?.name) || [];
 
-  // Calculate average progress
   const avgProgress = totalTasks > 0
     ? Math.round(tasks.reduce((sum, t) => sum + t.progress, 0) / totalTasks)
     : 0;

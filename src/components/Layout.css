@@ -21,7 +21,6 @@
     animation: fade-in 0.4s ease-out;
 }
 
-/* Add subtle backdrop blur for cards */
 .main-content > * {
     animation: slide-in-up 0.5s ease-out;
 }

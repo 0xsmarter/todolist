@@ -87,12 +87,10 @@ body {
   background: var(--text-secondary);
 }
 
-/* Smooth transitions for all interactive elements */
 button, a, input, select, textarea {
   transition: all 0.2s ease;
 }
 
-/* Focus visible styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;

@@ -8,7 +8,6 @@ const EditTask = ({ tasks, onUpdateTask, onDeleteTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [tempProgress, setTempProgress] = useState(0);
 
-  // Filter and sort states
   const [filterStatus, setFilterStatus] = useState("all");
   const [filterPriority, setFilterPriority] = useState("all");
   const [filterTag, setFilterTag] = useState("all");
@@ -23,7 +22,6 @@ const EditTask = ({ tasks, onUpdateTask, onDeleteTask }) => {
     return dueDate < today;
   };
 
-  // Get all unique tags from tasks
   const allTags = useMemo(() => {
     const tags = new Set();
     tasks?.forEach(task => {
@@ -32,11 +30,9 @@ const EditTask = ({ tasks, onUpdateTask, onDeleteTask }) => {
     return Array.from(tags);
   }, [tasks]);
 
-  // Filter and sort tasks
   const filteredAndSortedTasks = useMemo(() => {
     let filtered = [...(tasks || [])];
 
-    // Apply status filter
     if (filterStatus !== "all") {
       if (filterStatus === "completed") {
         filtered = filtered.filter(t => t.progress === 100);
@@ -49,17 +45,14 @@ const EditTask = ({ tasks, onUpdateTask, onDeleteTask }) => {
       }
     }
 
-    // Apply priority filter
     if (filterPriority !== "all") {
       filtered = filtered.filter(t => t.priority === filterPriority);
     }
 
-    // Apply tag filter
     if (filterTag !== "all") {
       filtered = filtered.filter(t => t.tags?.includes(filterTag));
     }
 
-    // Sort tasks
     filtered.sort((a, b) => {
       if (sortBy === "date") {
         return new Date(a.date || 0) - new Date(b.date || 0);
