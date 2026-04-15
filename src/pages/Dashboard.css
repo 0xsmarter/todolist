@@ -43,7 +43,7 @@
 
 .dashboard-primary-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 25px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 4px 25px rgba(59, 130, 246, 0.4);
 }
 
 .dashboard-stats-grid {
@@ -97,7 +97,6 @@
 .stat-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--accent-primary);
 }
 
 .stat-icon-wrapper {
@@ -215,7 +214,6 @@
 
 .quick-action-btn:hover {
     background-color: var(--accent-subtle);
-    border-color: var(--accent-primary);
     color: var(--accent-primary);
 }
 
@@ -381,7 +379,6 @@
 }
 
 .view-all-tasks-btn:hover {
-    border-color: var(--accent-primary);
     color: var(--accent-primary);
 }
 

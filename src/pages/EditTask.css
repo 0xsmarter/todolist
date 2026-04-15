@@ -34,7 +34,6 @@
 }
 
 .filter-toggle-btn:hover {
-    border-color: var(--accent-primary);
     color: var(--accent-primary);
 }
 

@@ -116,7 +116,7 @@ const EditTask = ({ tasks, onUpdateTask, onDeleteTask }) => {
       <div className="edit-task-container">
         <h2 className="edit-task-title">Edit Task Progress</h2>
         <div className="empty-tasks">
-          <p>No tasks found. Please create a new activity first.</p>
+          <p>No tasks found. Create a project and add tasks to see them here.</p>
         </div>
       </div>
     );
@@ -232,6 +232,7 @@ const EditTask = ({ tasks, onUpdateTask, onDeleteTask }) => {
                     </span>
                   </div>
                   <p className="task-meta">
+                    {task._projectName && `Project: ${task._projectName} • `}
                     ID: #{task.id}
                     {task.date && ` • Due: ${task.date}`}
                     {task.assignedUser && ` • Assigned to: ${task.assignedUser}`}

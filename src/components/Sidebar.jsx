@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { Users, PlusCircle, Edit3, FileText, CheckSquare } from "lucide-react";
+import { Users, Edit3, FileText, CheckSquare, FolderKanban } from "lucide-react";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const navItems = [
     { name: "Manage User", path: "/manage-user", icon: Users },
-    { name: "New Activity", path: "/new-activity", icon: PlusCircle },
+{ name: "Projects", path: "/projects", icon: FolderKanban },
     { name: "Edit task progress", path: "/edit-task", icon: Edit3 },
     { name: "Report", path: "/report", icon: CheckSquare },
   ];

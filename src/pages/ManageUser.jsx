@@ -8,7 +8,7 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus, onUpdateUs
   const [editingUserId, setEditingUserId] = useState(null);
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
-  const [newUserRole, setNewUserRole] = useState("Viewer");
+  const [newUserRole, setNewUserRole] = useState("");
 
   const openModal = () => {
     setIsEditMode(false);
@@ -30,11 +30,11 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus, onUpdateUs
     setEditingUserId(null);
     setNewUserName("");
     setNewUserEmail("");
-    setNewUserRole("Viewer");
+    setNewUserRole("");
   };
 
   const handleAdd = () => {
-    if (!newUserName || !newUserEmail) return;
+    if (!newUserName || !newUserEmail || !newUserRole) return;
 
     if (isEditMode && editingUserId) {
       if (onUpdateUser) {
@@ -138,15 +138,13 @@ const ManageUser = ({ users, onAddUser, onDeleteUser, onToggleStatus, onUpdateUs
               </div>
               <div className="form-group">
                 <label className="form-label">User Role</label>
-                <select
-                  className="form-select"
+                <input
+                  type="text"
+                  placeholder="e.g. Developer, Designer, Manager..."
+                  className="form-input"
                   value={newUserRole}
                   onChange={(e) => setNewUserRole(e.target.value)}
-                >
-                  <option value="Admin">Admin</option>
-                  <option value="Editor">Editor</option>
-                  <option value="Viewer">Viewer</option>
-                </select>
+                />
               </div>
             </div>
             <div className="modal-footer">

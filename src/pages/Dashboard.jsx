@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, CheckCircle, Clock, TrendingUp, Calendar } from "lucide-react";
+import { CheckCircle, Clock, TrendingUp, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
@@ -34,10 +34,6 @@ const Dashboard = ({ tasks, users, activities }) => {
           <h1 className="dashboard-title">{getGreeting()}! 👋</h1>
           <p className="dashboard-subtitle">Here's what's happening with your tasks today.</p>
         </div>
-        <button onClick={() => navigate("/new-activity")} className="dashboard-primary-btn">
-          <Plus size={18} />
-          New Task
-        </button>
       </div>
 
       <div className="dashboard-stats-grid">
@@ -128,10 +124,6 @@ const Dashboard = ({ tasks, users, activities }) => {
         <div className="dashboard-card quick-actions-card">
           <h3 className="card-title">Quick Actions</h3>
           <div className="quick-actions-grid">
-            <button onClick={() => navigate("/new-activity")} className="quick-action-btn">
-              <Plus size={20} />
-              <span>Create Task</span>
-            </button>
             <button onClick={() => navigate("/edit-task")} className="quick-action-btn">
               <CheckCircle size={20} />
               <span>Update Progress</span>

@@ -16,9 +16,9 @@
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
 
-  --accent-primary: #8b5cf6;
-  --accent-hover: #7c3aed;
-  --accent-subtle: rgba(139, 92, 246, 0.15);
+  --accent-primary: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-subtle: rgba(59, 130, 246, 0.15);
 
   --success: #22c55e;
   --success-subtle: rgba(34, 197, 94, 0.15);
@@ -26,8 +26,8 @@
   --warning-subtle: rgba(245, 158, 11, 0.15);
   --danger: #ef4444;
   --danger-subtle: rgba(239, 68, 68, 0.15);
-  --info: #3b82f6;
-  --info-subtle: rgba(59, 130, 246, 0.15);
+  --info: #f97316;
+  --info-subtle: rgba(249, 115, 22, 0.15);
 
   --border-color: #27272a;
   --border-subtle: #1f1f22;
@@ -40,7 +40,7 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 * {
@@ -55,7 +55,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+  background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
               var(--bg-app);
   color: var(--text-primary);
 }
@@ -91,7 +91,14 @@ button, a, input, select, textarea {
   transition: all 0.2s ease;
 }
 
-*:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: none;
 }
